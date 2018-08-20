@@ -54,4 +54,22 @@ def gameOver():
 
 # Events
 
+# the main logic for the game
+while 1:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT or event.key == ord('d'):
+                changeTo =="RIGHT"
+            if event.key == pygame.K_LEFT or event.key == ord('a'):
+                changeTo =="LEFT"
+            if event.key == pygame.K_UP or event.key == ord('w'):
+                changeTo =="UP"
+            if event.key == pygame.K_DOWN or event.key == ord('s'):
+                changeTo =="DOWN"
+            if event.key == pygame.K_ESCAPE:
+                pygame.event.post(pygame.event.Event((QUIT)))
+
 
