@@ -46,19 +46,20 @@ score = 0
 
 
 def gameOver():
-    myFont = pygame.font.SysFont('arial', 50)
+    myFont = pygame.font.SysFont('monaco', 50)
     gameIsOverSurf = myFont.render('Game Over!', True, red)
     gameIsOverRect = gameIsOverSurf.get_rect()
     gameIsOverRect.midtop = (360, 15)
     playSurface.blit(gameIsOverSurf, gameIsOverRect)
-    pygame.display.flip()
     showScore(0)
-    time.sleep(4)
+    pygame.display.flip()
+
+    time.sleep(10)
     pygame.quit()  # snake game exit
     sys.exit()  # console exit
 
 def showScore(choice = 1):
-    myFont = pygame.font.SysFont('arial', 25)
+    myFont = pygame.font.SysFont('monaco', 25)
     scoreSurf = myFont.render('Score: {0}'.format(score) , True, black)
     scoreRect = scoreSurf.get_rect()
     if choice == 1:
@@ -67,7 +68,7 @@ def showScore(choice = 1):
         scoreRect.midtop = (360,120)
 
     playSurface.blit(scoreSurf, scoreRect)
-    pygame.display.flip()
+    
 
 # the main logic for the game
 while True:
@@ -121,10 +122,14 @@ foodSpawn = True
 
 # Graphics
 playSurface.fill(white)
-for pos in snakeBody:
-    pygame.draw.rect(playSurface, green, pygame.RECT(pos[0], pos[1], 10, 10))
 
-pygame.draw.rect(playSurface, brown, pygame.RECT(foodPos[0], foodPos[1], 10, 10))
+#Drawing the Snake
+for pos in snakeBody:
+    pygame.draw.rect(playSurface, green, 
+                     pygame.RECT(pos[0], pos[1], 10, 10))
+
+pygame.draw.rect(playSurface, brown, pygame.RECT(
+    foodPos[0], foodPos[1], 10, 10))
 
 
 if snakePos[0] > 720 or snakePos[0] < 0:
@@ -136,6 +141,6 @@ for block in snakeBody[1: ]:
     if snakePos[0] == block[0] and snakePos[1] == block[1]:
         gameOver()
 
-pygame.display.flip()
 showScore()
+pygame.display.flip()
 frameController.tick(23)
