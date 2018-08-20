@@ -116,5 +116,9 @@ if snakePos[0] > 720 or snakePos[0] < 0:
 if snakePos[1] > 450 or snakePos[1] < 0:
     gameOver()
     
+for block in snakeBody[1: ]:
+    if snakePos[0] == block[0] and snakePos[1] == block[1]:
+        gameOver()
+        
 pygame.display.flip()
 frameController.tick(23)
