@@ -20,7 +20,7 @@ else:
 
 # Creating the game surface
 
-playSurface = pygame.display.set_mode((800, 400))
+playSurface = pygame.display.set_mode((720, 460))
 pygame.display.set_caption('Snake Game')
 
 # Colors for the game
@@ -37,7 +37,7 @@ frameController = pygame.time.Clock()
 snakePos = [100, 50]
 snakeBody = [[100, 50], [90, 50], [80, 50]]
 
-foodPos = [random.randrange(1, 80)*10, random.randrange(1, 40)*10]
+foodPos = [random.randrange(1, 72)*10, random.randrange(1, 46)*10]
 foodSpawn = True
 
 direction = 'RIGHT'
@@ -50,9 +50,11 @@ def gameOver():
     myFont = pygame.font.SysFont('arial', 50)
     gameIsOverSurf = myFont.render('Game Over!', True, red)
     gameIsOverRect = gameIsOverSurf.get_rect()
-    gameIsOverRect.midtop = (400, 25)
+    gameIsOverRect.midtop = (360, 15)
     playSurface.blit(gameIsOverSurf, gameIsOverRect)
     pygame.display.flip()
+
+
     time.sleep(10)
     pygame.quit()  # snake game exit
     sys.exit()  # console exit
@@ -102,6 +104,13 @@ else:
     snakeBody.pop()
 
 if foodSpawn == False:
-    foodPos = [random.randrange(1, 80)*10, random.randrange(1, 40)*10]
+    foodPos = [random.randrange(1, 72)*10, random.randrange(1, 46)*10]
 foodSpawn = True
 
+# Graphics
+playSurface.fill(white)
+for pos in snakeBody:
+    pygame.draw.rect(playSurface, green, pygame.RECT(pos[0], pos[1], 10, 10))
+
+pygame.display.flip()
+frameController.tick(25)
