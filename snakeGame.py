@@ -52,8 +52,8 @@ def gameOver():
     gameIsOverRect.midtop = (360, 15)
     playSurface.blit(gameIsOverSurf, gameIsOverRect)
     pygame.display.flip()
-
-    time.sleep(10)
+    showScore(0)
+    time.sleep(4)
     pygame.quit()  # snake game exit
     sys.exit()  # console exit
 
