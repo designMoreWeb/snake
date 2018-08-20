@@ -19,4 +19,8 @@ else:
 
 playSurface = pygame.display.set_mode((800,400))
 pygame.display.set_caption('Snake Game')
-time.sleep(8)
+
+# Colors for the game 
+red = pygame.Color(255,0,0)
+green = pygame.Color(0,255,0)
+blue = pygame.Color(0,0,255)
