@@ -39,3 +39,16 @@ foodSpawn = True
 
 direction = 'RIGHT'
 changeTo = direction
+
+#creating function for gameisOver
+
+def gameOver():
+    myFont = pygame.font.SysFont('arial', 50)
+    gameIsOverSurf = myFont.render('Game Over!', True, red)
+    gameIsOverRect = gameIsOverSurf.get_rect()
+    gameIsOverRect.midtop = (400,25)
+    playSurface.blit(gameIsOverSurf,gameIsOverRect)
+    pygame.display.flip()
+gameOver()
+time.sleep(10)
+
