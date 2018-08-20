@@ -111,5 +111,10 @@ for pos in snakeBody:
 
 pygame.draw.rect(playSurface, brown, pygame.RECT(foodPos[0], foodPos[1], 10, 10))
 
+if snakePos[0] > 720 or snakePos[0] < 0:
+    gameOver()
+if snakePos[1] > 450 or snakePos[1] < 0:
+    gameOver()
+    
 pygame.display.flip()
-frameController.tick(10)
+frameController.tick(23)
