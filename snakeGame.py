@@ -65,8 +65,9 @@ def showScore(choice = 1):
         scoreRect.midtop = (80, 10)
     else:
         scoreRect.midtop = (360,120)
-        
+
     playSurface.blit(scoreSurf, scoreRect)
+    pygame.display.flip()
 
 # the main logic for the game
 while True:
@@ -108,10 +109,12 @@ if direction == 'DOWN':
 # SNAKE body Movement
 snakeBody.insert(0, list(snakePos))
 if snakePos[0] == foodPos[0] and snakePos[1] == foodPos[1]:
+    score += 1
     foodSpawn = False
 else:
     snakeBody.pop()
 
+#food spawning
 if foodSpawn == False:
     foodPos = [random.randrange(1, 72)*10, random.randrange(1, 46)*10]
 foodSpawn = True
@@ -123,6 +126,7 @@ for pos in snakeBody:
 
 pygame.draw.rect(playSurface, brown, pygame.RECT(foodPos[0], foodPos[1], 10, 10))
 
+
 if snakePos[0] > 720 or snakePos[0] < 0:
     gameOver()
 if snakePos[1] > 450 or snakePos[1] < 0:
@@ -133,4 +137,5 @@ for block in snakeBody[1: ]:
         gameOver()
 
 pygame.display.flip()
+showScore()
 frameController.tick(23)
