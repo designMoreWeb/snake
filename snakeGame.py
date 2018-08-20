@@ -41,7 +41,6 @@ direction = 'RIGHT'
 changeTo = direction
 
 #creating function for gameisOver
-
 def gameOver():
     myFont = pygame.font.SysFont('arial', 50)
     gameIsOverSurf = myFont.render('Game Over!', True, red)
@@ -49,6 +48,10 @@ def gameOver():
     gameIsOverRect.midtop = (400,25)
     playSurface.blit(gameIsOverSurf,gameIsOverRect)
     pygame.display.flip()
-gameOver()
-time.sleep(10)
+    time.sleep(10)
+    pygame.quit() #snake game exit
+    sys.exit() #console exit
+
+# Events
+
 
