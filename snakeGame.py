@@ -18,4 +18,5 @@ else:
 #Creating the game surface
 
 playSurface = pygame.display.set_mode((800,400))
-
+pygame.display.set_caption('Snake Game')
+time.sleep(8)
