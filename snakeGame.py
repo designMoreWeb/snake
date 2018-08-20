@@ -40,6 +40,8 @@ foodSpawn = True
 direction = 'RIGHT'
 changeTo = direction
 
+score = 0
+
 # creating function for gameisOver
 
 
@@ -55,6 +57,16 @@ def gameOver():
     pygame.quit()  # snake game exit
     sys.exit()  # console exit
 
+def showScore(choice = 1):
+    myFont = pygame.font.SysFont('arial', 25)
+    scoreSurf = myFont.render('Score: {0}'.format(score) , True, black)
+    scoreRect = scoreSurf.get_rect()
+    if choice == 1:
+        scoreRect.midtop = (80, 10)
+    else:
+        scoreRect.midtop = (360,120)
+        
+    playSurface.blit(scoreSurf, scoreRect)
 
 # the main logic for the game
 while True:
@@ -119,6 +131,6 @@ if snakePos[1] > 450 or snakePos[1] < 0:
 for block in snakeBody[1: ]:
     if snakePos[0] == block[0] and snakePos[1] == block[1]:
         gameOver()
-        
+
 pygame.display.flip()
 frameController.tick(23)
