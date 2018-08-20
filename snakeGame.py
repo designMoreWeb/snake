@@ -57,9 +57,6 @@ def gameOver():
     pygame.quit()  # snake game exit
     sys.exit()  # console exit
 
-# Events
-
-
 # the main logic for the game
 while True:
     for event in pygame.event.get():
@@ -87,3 +84,12 @@ if changeTo == 'UP' and not direction == 'DOWN':
     direction = 'UP'
 if changeTo == 'DOWN' and not direction == 'UP':
     direction = 'DOWN'
+
+if direction == 'RIGHT':
+    snakePos[0] += 10
+if direction == 'LEFT':
+    snakePos[0] -= 10
+if direction == 'UP':
+    snakePos[1] -= 10
+if direction == 'DOWN':
+    snakePos[1] += 10
